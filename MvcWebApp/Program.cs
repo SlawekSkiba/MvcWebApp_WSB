@@ -14,9 +14,6 @@ builder.Services.AddDbContext<AppDbContext>(
 
 var app = builder.Build();
 
-app.MigrateDatabase();
-
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -36,4 +33,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+await app.MigrateDatabaseAsync();
+
 app.Run();
+
+
