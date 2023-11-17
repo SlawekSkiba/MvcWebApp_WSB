@@ -21,11 +21,9 @@ namespace MvcWebApp.Controllers
         }
 
         // GET: Students
-        public async Task<IActionResult> Index(string? orderBy, string? searchString, string? currentFilter, int page = 1, int pageSize = 5)
-        {
-            var skipCount = (page - 1) * pageSize;
-            var students = _context.Students.AsQueryable();
-            var pageNumber = 1;
+        public async Task<IActionResult> Index(string? orderBy, string? searchString, string? currentFilter, int pageNumber = 1, int pageSize = 5)
+        {            
+            var students = _context.Students.AsQueryable();            
 
             if (searchString != null)
             {
