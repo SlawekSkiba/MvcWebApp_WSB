@@ -10,7 +10,7 @@ public static class Migrator
         using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
         {
             var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
-            context.Database.Migrate();
+            context?.Database.Migrate();
         }
     }
 }
